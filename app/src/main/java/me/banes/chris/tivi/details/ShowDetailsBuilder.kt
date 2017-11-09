@@ -14,39 +14,24 @@
  * limitations under the License.
  */
 
-package me.banes.chris.tivi.home
+package me.banes.chris.tivi.details
 
 import android.arch.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
-import me.banes.chris.tivi.home.discover.DiscoverBuilder
-import me.banes.chris.tivi.home.library.LibraryBuilder
-import me.banes.chris.tivi.home.popular.PopularBuilder
-import me.banes.chris.tivi.home.trending.TrendingBuilder
-import me.banes.chris.tivi.home.watched.WatchedShowsBuilder
 import me.banes.chris.tivi.inject.ViewModelKey
 
 @Module
-internal abstract class HomeBuilder {
-
+internal abstract class ShowDetailsBuilder {
     @ContributesAndroidInjector(modules = arrayOf(
-            DiscoverBuilder::class,
-            TrendingBuilder::class,
-            PopularBuilder::class,
-            LibraryBuilder::class,
-            WatchedShowsBuilder::class))
-    internal abstract fun homeActivity(): HomeActivity
+
+    ))
+    internal abstract fun showDetailsActivity(): ShowDetailsActivity
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeActivityViewModel::class)
-    abstract fun bindHomeActivityViewModel(viewModel: HomeActivityViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(HomeNavigatorViewModel::class)
-    abstract fun bindHomeNavigatorViewModel(viewModel: HomeNavigatorViewModel): ViewModel
-
+    @ViewModelKey(ShowDetailsActivityViewModel::class)
+    abstract fun bindShowDetailsActivityViewModel(viewModel: ShowDetailsActivityViewModel): ViewModel
 }
